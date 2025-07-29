@@ -175,7 +175,86 @@ void print16(int n){
     }
 }
 void print17(int n){
-    
+    for(int i=0;i<n;i++){
+        for(char ch='E'-i;ch<='E';ch++){
+            cout<<ch<<" ";
+        }
+        cout<<endl;
+    }
+}
+void print18(int n){
+    int space =0;
+    for(int i=0;i<n;i++){
+        for(int j=1;j<=n-i;j++){
+            cout<<"*";
+        }
+        for(int j=0;j<space;j++){
+            cout<<" ";
+
+        }
+        for(int j=1;j<=n-i;j++){
+            cout<<"*";
+        }
+        space +=2;
+        cout<<endl;
+    }
+    int sapces=2*n -2;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=i;j++){
+            cout<<"*";
+        }
+        for(int j=0;j<sapces;j++){
+            cout<<" ";
+
+        }
+        for(int j=1;j<=i;j++){
+            cout<<"*";
+        }
+        sapces -=2;
+        cout<<endl;
+    }
+}
+void print19(int n){
+    int space=2*n -2;
+    for(int i=1;i<=(2*n)-1;i++){
+        int stars =i;
+        if(i>n)stars = 2*n -i;
+        for(int j=1;j<=stars;j++){
+            cout<<"*";
+        }
+        for(int j=1;j<=space;j++){
+            cout<<" ";
+        }
+        for(int j=1;j<=stars;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+        if(i<n) space-=2;
+        else space+=2;
+    }
+}
+void print20(int n){
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            if(i==1 || j==1 || i==n || j==n){
+                cout<<"*";
+            }
+            else cout<<" ";
+        }
+        cout<<endl;
+    }
+}
+void print21(int n){
+    for(int i=0;i<2*n -1;i++){
+        for(int j=0;j<2*n-1;j++){
+            int top =i;
+            int left =j;
+            int right = (2*n -2)-j;
+            int down = (2*n -2)-i;
+            cout<<(n-min(min(top,down),(right,left)));
+        }
+        cout<<endl;
+    }
 }
 int main(){
     // nested loops:
@@ -203,5 +282,10 @@ int main(){
     print14(n);
     print15(n);
     print16(n);
+    print17(n);
+    print18(n);
+    print19(n);
+    print20(n);
+    print21(n);
     return 0;
 }
