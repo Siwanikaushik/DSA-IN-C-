@@ -67,6 +67,32 @@ int fact(int n){  // tc= O(n)
     if(n==0) return 1;
     return n*fact(n-1);
 }
+
+// reverse an array
+void reverseArray(int i,int a[],int n){
+    if(i>=n/2) return;
+    swap(a[i],a[n-i-1]);
+    reverseArray(i+1,a,n);
+}
+
+// check string palindrome
+bool stringPalindrome(int i,string &s,int n){  // tc = n/2
+    if(i>=n/2) return true;
+    if(s[i] != s[n-i-1]){
+    return false;
+     }
+    return stringPalindrome(i+1,s,n);
+}
+
+// multiple recurssion calls
+
+//  fibonacci numbers
+int fibo(int n){  // TC = 2^n exponential
+    if(n<=1) return n;
+    int last =fibo(n-1);
+    int second = fibo(n-2);
+    return last + second;
+}
 int main(){
     int n;
     cout<<"Enter the number: ";
@@ -88,5 +114,27 @@ int main(){
     cout<<sumFun(n);
     cout<<endl;
     cout<<fact(n);
+    cout<<endl;
+    int a[n];
+    cin>>n;
+    cout<<"enter array of "<<n<<" elements : "<<endl;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    reverseArray(0,a,n);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl<<"enter the string :";
+    string s;
+    cin>>s;
+    int l= s.size();
+    int m =stringPalindrome(0,s,l);
+    if(m==0){
+        cout<<"not a palindrome";
+    }
+    else cout<<" is a palindrome.";
+    cout<<endl;
+    cout<<fibo(4);
     return 0;
 }
