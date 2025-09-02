@@ -79,6 +79,39 @@ int isSorted(int n, vector<int> a){  // tc = O(n)
 // remove duplicates from the sorted array
 // brute force approach - declare a set & pass elements into it
 
+// Left rotate the array by one place
+void leftRotate(int n, int arr[]){ // TC-> O(n)
+    int temp = arr[0];
+    for(int i=1;i<n;i++){
+        arr[i-1]=arr[i];
+    }
+    arr[n-1] = temp;
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
+// left rotate the array by D places -brute force approach
+void leftRotateD(int n,int d,int arr[]){
+    d=d%n;
+    int temp[d];
+    int k=0;
+    for(int i=0;i<d;i++){
+        temp[i]=arr[k];
+        k++;
+    }
+    for(int i=d;i<n;i++){
+        arr[i-d]=arr[i];
+    }
+    for(int i=n-d;i<n;i++){
+        arr[i]=temp[i-(n-d)];
+    }
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+
+}
+
 
 int main(){
     vector<int> arr;
@@ -127,6 +160,20 @@ int main(){
             k++;
         }
     }
-    cout<<k;
+    cout<<k+1;
+    cout<<endl;
+    int m;
+    cout<<"Enter the number : ";
+    cin>>m;
+    int arry[m];
+    for(int i=0;i<m;i++){
+        cin>>arry[i];
+    }
+    leftRotate(m,arry);
+    cout<<endl;
+    int d;
+    cout<<"Enter the d : ";
+    cin>>d;
+    leftRotateD(m,d,arry);
     return 0;
 }
